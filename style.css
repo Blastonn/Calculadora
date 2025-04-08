@@ -8,6 +8,20 @@ body{
     font-family: 'Calculator';
     src: url('fonts/Calculator.ttf') format('truetype'); /* Ajuste o caminho para o arquivo .ttf ou .otf */
   }
+p{
+    display: flex;
+}
+button{
+    display: flex;
+    font-size: 18px;
+    padding: 12px;
+    border: 2px solid rgb(252, 229, 232);
+    background-color: rgb(245, 131, 150);
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    flex-basis: 22%;
+}
 
 .container{
     display: flex; 
@@ -18,35 +32,57 @@ body{
 }
 
 .container-fi{
-    display: flex;
-    justify-content: center;
     width: 400px;
     height: 550px;
     background-color: rgba(245,194,199,255);
-    border: 5px solid rgba(245,194,199,255);
+    border: 5px solid rgb(150, 115, 115);
 	border-radius: 20px;
     box-shadow: rgba(240,192,192,255) 0px 0.0625em 0.0625em, 
     rgba(255, 0, 0, 0.25) 0px 0.125em 0.5em, 
     rgba(255, 0, 0, 0.1) 0px 0px 0px 1px inset;
 }
 
-.container-fi-doix{
+.container-display{
     display: flex;
-    width: 300px;
+    justify-content: center;
+
+}
+
+.display-box{
+    display: flex;
+    width: 350px;
     height: 100px;
     justify-content: flex-end;
+    border: 2px solid black;
     align-items: flex-end;
     background-color: rgba(162,154,159,255);
     margin-top: 60px;
+    margin-left: 25px;
+    margin-right: 25px;
     border-radius: 10px;
     box-shadow: rgba(247,201,205,255) 0px 0.0625em 0.0625em, 
     rgba(247,201,205,255) 0px 0.125em 0.5em, 
     rgba(247,201,205,255) 0px 0px 0px 1px inset;
 }
 
-.display{
+.container-op{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 15px;
+    width: 350px;
+    height: 300px;
+
+}
+.botoes-grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.display-text{
     display: flex;
     margin: 15px;
-    font-size: 5vw;
+    font-size: 4vw;
     font-family: "Calculator";
 }
