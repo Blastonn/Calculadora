@@ -42,4 +42,3 @@ function operacao(oper, num, num2){
    }
 }
 
-operacao("/", 5,2);
