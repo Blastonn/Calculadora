@@ -60,7 +60,8 @@ button:active {
     height: 100px;
     justify-content: flex-end;
     border: 2px solid black;
-    align-items: flex-end;
+    align-items: flex-start;
+    gap: 5px;
     background-color: rgba(162,154,159,255);
     margin-top: 60px;
     margin-left: 25px;
@@ -86,9 +87,9 @@ button:active {
     gap: 5px;
 }
 
-.display-text{
+.display-text-number1{
     display: flex;
-    margin: 15px;
-    font-size: 2vw;
+    margin-top: 44px;
+    font-size: 3vw;
     font-family: "Calculator";
 }
