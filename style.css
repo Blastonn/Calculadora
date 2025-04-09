@@ -15,6 +15,7 @@ button{
     display: flex;
     font-size: 18px;
     padding: 12px;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
     border: 2px solid rgb(252, 229, 232);
     background-color: rgb(245, 131, 150);
     border-radius: 15px;
@@ -23,6 +24,11 @@ button{
     flex-basis: 22%;
 }
 
+button:active {
+    transform: scale(0.95); /* Reduz um pouco o tamanho */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para o efeito */
+  }
+  
 .container{
     display: flex; 
     justify-content: center;
