@@ -28,7 +28,7 @@ button:active {
     transform: scale(0.95); /* Reduz um pouco o tamanho */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para o efeito */
   }
-  
+
 .container{
     display: flex; 
     justify-content: center;
@@ -89,6 +89,6 @@ button:active {
 .display-text{
     display: flex;
     margin: 15px;
-    font-size: 4vw;
+    font-size: 2vw;
     font-family: "Calculator";
 }

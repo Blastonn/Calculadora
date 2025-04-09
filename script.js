@@ -42,3 +42,36 @@ function operacao(oper, num, num2){
    }
 }
 
+const botoes = document.querySelectorAll(".botoes-grid button");
+const botaoLimpar = document.querySelector(".botoes-grid .limpar");
+
+const display = document.querySelector(".display-box")
+
+
+function atualizarDisplay(){
+    botoes.forEach((button) => {
+        button.addEventListener("click", () => {
+            const content = document.createElement("p");
+
+            content.classList.add("display-text");
+            if(button.textContent != "CE"){
+                content.textContent = button.textContent;
+                display.appendChild(content);
+            }
+        });
+    })
+}
+
+function limparDisplay(){
+    botaoLimpar.addEventListener("click", () =>{
+        const textDisplay = document.querySelectorAll(".display-text");
+        textDisplay.forEach((texts) =>{
+            texts.remove();
+        })
+    });
+}
+
+limparDisplay();
+atualizarDisplay();
+
+
