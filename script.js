@@ -52,8 +52,8 @@ const botoesOperacao = document.querySelectorAll(".botoes-grid .operacao")
 
 const display = document.querySelector(".display-box")
 
-let numero1 = "";
-let numero2 = "";
+let numero1 = 0;
+let numero2 = 0;
 let operador = "";
 function atualizarDisplay(){
     botoes.forEach((button) => {
@@ -76,17 +76,14 @@ function limparDisplay(){
         const textDisplay = document.querySelectorAll(".display-text-number1");
         const resultado = document.querySelectorAll(".resultado");
         textDisplay.forEach((texts) =>{
-            numero1 = "";
-            numero2 = "";
-            operador = "";
             texts.remove();
         })
         resultado.forEach((texts) =>{
-            numero1 = "";
-            numero2 = "";
-            operador = "";
             texts.remove();
         })
+        numero1 = 0;
+        numero2 = 0;
+        operador = "";
     });
 }
 
@@ -96,26 +93,42 @@ function escolhaCalculos(){
             const buttonValue = botao.textContent;
             if (botao.classList.contains("number")) {
                 if (operador === "") {
-                    numero1 += buttonValue; 
+                    numero1 = (numero1 * 10) + parseInt(buttonValue);
                 } else {
-                    numero2 += buttonValue; 
+                    numero2 = (numero2 * 10) + parseInt(buttonValue);
                 }
             }
                 if (botao.classList.contains("operacao")) { 
-                    operador = buttonValue;  
+                    if (numero2 !== 0) {
+                        const resultado = operacao(operador, numero1, numero2);
+
+                        numero1 = resultado;
+                        numero2 = 0;
+                        atualizarResultado(resultado);
+                        
+                        const textDisplay = document.querySelectorAll(".display-text-number1");
+                        textDisplay.forEach((text) => text.remove());
+                    }
+                    operador = buttonValue; 
                 }
 
                 if(botao.classList.contains("calcular")){
-
+                    
                     const resultado = operacao(operador, parseInt(numero1), parseInt(numero2));
-                    console.log(resultado);
                     atualizarResultado(resultado);
                     numero1 = resultado;
-                    numero2 = "";
-                    limparDisplay();
+                    numero2 = 0;
+                    const textDisplay = document.querySelectorAll(".display-text-number1");
+                    textDisplay.forEach((text) => text.remove());
+                    
 
-
+                    const historicoTexto = `${resultado}`;
+                    historico(historicoTexto);  
                 }
+
+                
+
+        
 
        
         })
@@ -134,17 +147,27 @@ function atualizarResultado(resul){
     textDisplay.forEach((text)=> {
         text.remove();
     })
+    const textResu = document.querySelectorAll(".resultado");
+    textResu.forEach((text)=> {
+        text.remove();
+    })
     resultado.textContent = resul;
 
     display.appendChild(resultado);
+    
 
 }
 
-function limparResultado(resul){
-    const textDisplayResultado = document.querySelectorAll(".resultado");
+function historico(num){
+    const historico = document.createElement("p");
+    historico.classList.add("historico");
 
+
+    historico.textContent = num;
+    
+    const display = document.querySelector(".display-historico");
+    display.prepend(historico);
 }
-
 
 escolhaCalculos();
 limparDisplay();

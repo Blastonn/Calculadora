@@ -101,3 +101,14 @@ button:active {
     font-size: 3vw;
     font-family: "Calculator";
 }
+
+.display-historico{
+    display: flex;
+    gap: 10px;
+
+}
+
+.container-hist{
+    display: flex;
+    position: fixed;
+}
