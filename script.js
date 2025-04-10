@@ -113,7 +113,8 @@ function escolhaCalculos(){
                 }
 
                 if(botao.classList.contains("calcular")){
-                    
+                if (numero1 !== undefined && numero2 !== undefined && operador !== "") {
+
                     const resultado = operacao(operador, parseInt(numero1), parseInt(numero2));
                     atualizarResultado(resultado);
                     numero1 = resultado;
@@ -124,20 +125,15 @@ function escolhaCalculos(){
 
                     const historicoTexto = `${resultado}`;
                     historico(historicoTexto);  
+                }else{
+                    alert("@@@@! - ERROR: DIGITE UM VALOR VALIDO !! - @@@@!")
                 }
-
-                
-
-        
-
+                }
        
         })
     });
-
-
     
 }
-
 
 function atualizarResultado(resul){
     const resultado = document.createElement("p");
