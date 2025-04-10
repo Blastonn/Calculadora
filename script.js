@@ -30,18 +30,18 @@ function divisao(op = "/",...numeros){
     return resultado;
 }
 
-function operacao(oper, num1,num2){
+function operacao(oper,...numeros){
    if(oper === "+"){
-        const resultadoSoma = soma(oper,num1,num2);
+        const resultadoSoma = soma(oper,...numeros);
         return resultadoSoma;
    }else if(oper === "-"){
-        const resultadoSub = subtracao(oper,num1,num2);
+        const resultadoSub = subtracao(oper,...numeros);
         return resultadoSub;
    }else if(oper === "*"){
-        const resultadoMult = multiplicacao(oper,num1,num2);
+        const resultadoMult = multiplicacao(oper,...numeros);
         return resultadoMult
    }else if(oper === "/"){
-        const resultadoDivi = divisao(oper,num1,num2);
+        const resultadoDivi = divisao(oper,...numeros);
         return resultadoDivi;
    }
 }
@@ -64,7 +64,6 @@ function atualizarDisplay(){
             if(button.textContent != "CE" && button.textContent != "="){
                 content1.textContent = button.textContent;
                 display.appendChild(content1);
-                
             }
         });
 
@@ -75,7 +74,14 @@ function atualizarDisplay(){
 function limparDisplay(){
     botaoLimpar.addEventListener("click", () =>{
         const textDisplay = document.querySelectorAll(".display-text-number1");
+        const resultado = document.querySelectorAll(".resultado");
         textDisplay.forEach((texts) =>{
+            numero1 = "";
+            numero2 = "";
+            operador = "";
+            texts.remove();
+        })
+        resultado.forEach((texts) =>{
             numero1 = "";
             numero2 = "";
             operador = "";
@@ -100,20 +106,45 @@ function escolhaCalculos(){
                 }
 
                 if(botao.classList.contains("calcular")){
+
                     const resultado = operacao(operador, parseInt(numero1), parseInt(numero2));
                     console.log(resultado);
+                    atualizarResultado(resultado);
                     numero1 = resultado;
                     numero2 = "";
+                    limparDisplay();
+
 
                 }
 
-
+       
         })
     });
 
 
     
 }
+
+
+function atualizarResultado(resul){
+    const resultado = document.createElement("p");
+
+    resultado.classList.add("resultado");
+    const textDisplay = document.querySelectorAll(".display-text-number1");
+    textDisplay.forEach((text)=> {
+        text.remove();
+    })
+    resultado.textContent = resul;
+
+    display.appendChild(resultado);
+
+}
+
+function limparResultado(resul){
+    const textDisplayResultado = document.querySelectorAll(".resultado");
+
+}
+
 
 escolhaCalculos();
 limparDisplay();

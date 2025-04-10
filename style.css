@@ -2,6 +2,7 @@ body{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    background-color: pink;
 }
 
 @font-face {
@@ -88,6 +89,13 @@ button:active {
 }
 
 .display-text-number1{
+    display: flex;
+    margin-top: 44px;
+    font-size: 3vw;
+    font-family: "Calculator";
+}
+
+.resultado{
     display: flex;
     margin-top: 44px;
     font-size: 3vw;
