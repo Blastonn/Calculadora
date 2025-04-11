@@ -55,6 +55,8 @@ const display = document.querySelector(".display-box")
 let numero1 = 0;
 let numero2 = 0;
 let operador = "";
+let aposResultado = false;
+
 function atualizarDisplay(){
     botoes.forEach((button) => {
         button.addEventListener("click", () => {
@@ -95,9 +97,15 @@ function escolhaCalculos(){
             const buttonValue = botao.textContent;
 
             if (botao.classList.contains("number")){
+                if (aposResultado) {
+                    numero1 = 0;
+                    numero2 = 0;
+                    operador = "";
+                    limparResultado(); 
+                    aposResultado = false; 
+                }
+
                 if (operador === ""){
-                    flagOp = true;
-                    limparResultado();
                     numero1 = (numero1 * 10) + parseInt(buttonValue);
                 }else{
                     flagOp = true;
@@ -105,6 +113,11 @@ function escolhaCalculos(){
                 }
             }
                 if (botao.classList.contains("operacao")) { 
+                    
+                    if (aposResultado) {
+                        aposResultado = false; 
+                    }
+
                     if (numero2 !== 0) {
                         const resultado = operacao(operador, numero1, numero2);
 
@@ -123,6 +136,7 @@ function escolhaCalculos(){
 
                     const resultado = operacao(operador, parseInt(numero1), parseInt(numero2));
                     atualizarResultado(resultado);
+                    aposResultado = true;
 
                     numero1 = resultado;
 
@@ -145,6 +159,7 @@ function escolhaCalculos(){
     
 
                     historico(historicoTexto);  
+
                 }else if(flagOp != true){
                     atualizarResultado("Digite uma operacao!");
                     historicoTexto = "0";
@@ -168,6 +183,7 @@ function limparResultado(){
     textResu.forEach((text)=> {
         text.innerText = "";
     })
+
 }
 
 function atualizarResultado(resul){
