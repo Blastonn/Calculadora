@@ -92,7 +92,6 @@ function limparDisplay(){
 function escolhaCalculos(){
     botoes.forEach((botao) =>{
         botao.addEventListener("click", () =>{
-            let flagOp = false;
 
             const buttonValue = botao.textContent;
 
@@ -108,7 +107,6 @@ function escolhaCalculos(){
                 if (operador === ""){
                     numero1 = (numero1 * 10) + parseInt(buttonValue);
                 }else{
-                    flagOp = true;
                     numero2 = (numero2 * 10) + parseInt(buttonValue);
                 }
             }
@@ -160,7 +158,9 @@ function escolhaCalculos(){
 
                     historico(historicoTexto);  
 
-                }else if(flagOp != true){
+                }else if(numero1 === 0 && numero2 === 0 && operador === ""){
+                    aposResultado = true;
+
                     atualizarResultado("Digite uma operacao!");
                     historicoTexto = "0";
                     numero1 = 0;
