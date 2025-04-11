@@ -91,13 +91,15 @@ function escolhaCalculos(){
     botoes.forEach((botao) =>{
         botao.addEventListener("click", () =>{
             let flagOp = false;
+
             const buttonValue = botao.textContent;
-            if (botao.classList.contains("number")) {
-                if (operador === "") {
+
+            if (botao.classList.contains("number")){
+                if (operador === ""){
                     flagOp = true;
-                    atualizarResultado("");
+                    limparResultado();
                     numero1 = (numero1 * 10) + parseInt(buttonValue);
-                } else {
+                }else{
                     flagOp = true;
                     numero2 = (numero2 * 10) + parseInt(buttonValue);
                 }
@@ -121,11 +123,15 @@ function escolhaCalculos(){
 
                     const resultado = operacao(operador, parseInt(numero1), parseInt(numero2));
                     atualizarResultado(resultado);
+
                     numero1 = resultado;
+
                     if(numero1 === Infinity){
                         atualizarResultado("Divisao por 0");
                     }
                     numero2 = 0;
+                    operador = "";
+
                     limparNumeros();
                     let historicoTexto = `${resultado}`;
 
@@ -136,11 +142,17 @@ function escolhaCalculos(){
                         operador = "";
                     }
 
+    
+
                     historico(historicoTexto);  
                 }else if(flagOp != true){
-                   atualizarResultado("Digite uma operacao!");
+                    atualizarResultado("Digite uma operacao!");
+                    historicoTexto = "0";
+                    numero1 = 0;
+                    numero2 = 0;
+                    operador = "";
                 }
-                }
+            }
         })
     });
     
@@ -154,7 +166,7 @@ function limparNumeros(){
 function limparResultado(){
     const textResu = document.querySelectorAll(".resultado");
     textResu.forEach((text)=> {
-        text.remove();
+        text.innerText = "";
     })
 }
 
