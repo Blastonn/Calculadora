@@ -134,6 +134,7 @@ function escolhaCalculos(){
 
                     const resultado = operacao(operador, parseInt(numero1), parseInt(numero2));
                     atualizarResultado(resultado);
+                    let numeroTemp = numero1;
                     aposResultado = true;
 
                     numero1 = resultado;
@@ -141,17 +142,15 @@ function escolhaCalculos(){
                     if(numero1 === Infinity){
                         atualizarResultado("Divisao por 0");
                     }
+                    let historicoTexto = ` ${resultado}  |`;
+
                     numero2 = 0;
                     operador = "";
 
                     limparNumeros();
-                    let historicoTexto = `${resultado}`;
 
                     if(operador === "/" && numero2 === 0){
-                        historicoTexto = "0";
-                        numero1 = 0;
-                        numero2 = 0;
-                        operador = "";
+                        resetarOperacao();
                     }
 
     
@@ -160,12 +159,8 @@ function escolhaCalculos(){
 
                 }else if(numero1 === 0 && numero2 === 0 && operador === ""){
                     aposResultado = true;
-
                     atualizarResultado("Digite uma operacao!");
-                    historicoTexto = "0";
-                    numero1 = 0;
-                    numero2 = 0;
-                    operador = "";
+                    resetarOperacao();
                 }
             }
         })
@@ -176,6 +171,13 @@ function escolhaCalculos(){
 function limparNumeros(){
     const textDisplay = document.querySelectorAll(".display-text-number1");
     return textDisplay.forEach((text) => text.remove());
+}
+
+function resetarOperacao(){
+    historicoTexto = "0";
+    numero1 = 0;
+    numero2 = 0;
+    operador = "";
 }
 
 function limparResultado(){

@@ -67,6 +67,7 @@ button:active {
     margin-top: 60px;
     margin-left: 25px;
     margin-right: 25px;
+    overflow: hidden;
     border-radius: 10px;
     box-shadow: rgba(247,201,205,255) 0px 0.0625em 0.0625em, 
     rgba(247,201,205,255) 0px 0.125em 0.5em, 
@@ -105,10 +106,11 @@ button:active {
 .display-historico{
     display: flex;
     gap: 10px;
-
 }
 
 .container-hist{
     display: flex;
-    position: fixed;
+    overflow: hidden;
+    position: absolute;
+    flex:1;
 }
